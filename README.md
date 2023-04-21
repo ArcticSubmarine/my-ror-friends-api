@@ -27,7 +27,7 @@ rails db:migrate
   - Link `friends` and `dogs`:
     - in a terminal, run:
     ```
-    rails generate migration add_references_to_dogs friend: references
+    rails generate migration add_references_to_dogs friend:references
     rails db:migrate
     ```
     - Update the `dog` model:
@@ -51,12 +51,12 @@ rails db:migrate
     ```
 - Create a new model `Houses`. A `friend` needs to have a `house`, and the `house` has to be created while the `friend` is created. The `Houses` model does not have its own CRUD.
 ```
- rails g scaffold houses type: enum["appartment","house"] city:string
+ rails g model houses type: enum["appartment","house"] city:string
  rails db:migrate
 ```
   - Link `houses` and `friends`:
   ```
-   rails generate migration add_reference_to_houses friend: references
+   rails generate migration add_reference_to_houses friend:references
    rails db:migrate
   ```
   - Update the `house` model:

@@ -10,13 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_13_140710) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_21_122100) do
   create_table "dogs", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "friend"
-    t.string "references"
     t.integer "friend_id", null: false
     t.index ["friend_id"], name: "index_dogs_on_friend_id"
   end
@@ -29,5 +27,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_13_140710) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "houses", force: :cascade do |t|
+    t.string "kind"
+    t.string "city"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "friend_id", null: false
+    t.index ["friend_id"], name: "index_houses_on_friend_id"
+  end
+
   add_foreign_key "dogs", "friends"
+  add_foreign_key "houses", "friends"
 end
